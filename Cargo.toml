@@ -4,3 +4,18 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+cgmath = "0.18.0"
+clap = { version = "4.5.26", features = ["derive"] }
+serde = { version = "1.0.217", features = ["derive"] }
+serde-inline-default = "0.2.3"
+serde_yml = "0.0.12"
+smithay-client-toolkit = "0.19.2"
+wayland-client = "0.31.7"
+wayland-protocols = "0.32.5"
+
+[profile.release]
+strip = true
+lto = true
+opt-level = 3
+codegen-units = 1
+debug = false

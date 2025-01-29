@@ -1,8 +1,10 @@
 {
   rustPlatform,
+  pkg-config,
+  wayland,
+  libxkbcommon,
 }:
-
-rustPlatform.buildRustPackage rec {
+rustPlatform.buildRustPackage {
   name = "mouse-gestures";
   src = ./.;
 
@@ -11,7 +13,14 @@ rustPlatform.buildRustPackage rec {
     allowBuiltinFetchGit = true;
   };
 
+  buildInputs = [
+    libxkbcommon
+    wayland
+  ];
+
   nativeBuildInputs = [
+    pkg-config
+    libxkbcommon
+    wayland
   ];
 }
-
