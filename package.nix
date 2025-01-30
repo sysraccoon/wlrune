@@ -5,7 +5,7 @@
   libxkbcommon,
 }:
 rustPlatform.buildRustPackage {
-  name = "mouse-gestures";
+  name = "wlrune";
   src = ./.;
 
   cargoLock = {

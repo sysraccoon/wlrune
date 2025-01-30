@@ -13,24 +13,24 @@
         inherit system;
       };
       lib = pkgs.lib;
-      mouse-gestures-package = pkgs.callPackage ./package.nix {};
+      wlrune-package = pkgs.callPackage ./package.nix {};
     in {
       packages = rec {
-        mouse-gestures = mouse-gestures-package;
-        default = mouse-gestures;
+        wlrune = wlrune-package;
+        default = wlrune;
       };
 
       apps = rec {
-        mouse-gestures = flake-utils.lib.mkApp {
-          drv = self.packages.${system}.mouse-gestures;
+        wlrune = flake-utils.lib.mkApp {
+          drv = self.packages.${system}.wlrune;
         };
-        default = mouse-gestures;
+        default = wlrune;
       };
 
       devShells.default = pkgs.mkShell rec {
         buildInputs =
-          mouse-gestures-package.nativeBuildInputs
-          ++ mouse-gestures-package.buildInputs
+          wlrune-package.nativeBuildInputs
+          ++ wlrune-package.buildInputs
           ++ (with pkgs; [
             rustup
             cargo

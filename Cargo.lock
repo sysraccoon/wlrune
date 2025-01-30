@@ -350,20 +350,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "mouse-gestures"
-version = "0.1.0"
-dependencies = [
- "cgmath",
- "clap",
- "serde",
- "serde-inline-default",
- "serde_yml",
- "smithay-client-toolkit",
- "wayland-client",
- "wayland-protocols",
-]
-
-[[package]]
 name = "num-traits"
 version = "0.2.19"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -784,6 +770,20 @@ name = "windows_x86_64_msvc"
 version = "0.52.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "589f6da84c646204747d1270a2a5661ea66ed1cced2631d546fdfb155959f9ec"
+
+[[package]]
+name = "wlrune"
+version = "0.1.0"
+dependencies = [
+ "cgmath",
+ "clap",
+ "serde",
+ "serde-inline-default",
+ "serde_yml",
+ "smithay-client-toolkit",
+ "wayland-client",
+ "wayland-protocols",
+]
 
 [[package]]
 name = "xcursor"

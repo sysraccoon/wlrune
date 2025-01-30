@@ -119,7 +119,7 @@ fn load_config(config_path: Option<String>,) -> Result<AppConfig, ()> {
 
     let xdg_config_home = env::var("XDG_CONFIG_HOME").unwrap_or(format!("{home}/.local/share"));
     let xdg_config_home = Path::new(&xdg_config_home);
-    let config_path = xdg_config_home.join("mouse-gestures/config.yaml");
+    let config_path = xdg_config_home.join("wlrune/config.yaml");
 
     let config = if config_path.exists() {
         eprintln!("load configuration file {}", config_path.display());
@@ -215,7 +215,7 @@ fn gesture_data_dir() -> Result<PathBuf, ()> {
     })?;
     let xdg_home = env::var("XDG_DATA_HOME").unwrap_or(format!("{home}/.local/share"));
     let xdg_home = Path::new(&xdg_home);
-    let gesture_data_dir = xdg_home.join("mouse-gestures");
+    let gesture_data_dir = xdg_home.join("wlrune");
 
     Ok(gesture_data_dir)
 }
