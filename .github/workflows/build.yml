@@ -10,7 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - target: aarch64-linux
+          # - target: aarch64-linux
           - target: x86_64-linux
     steps:
     - uses: actions/checkout@v4
@@ -37,11 +37,13 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           path: "artifacts/"
+      - run: ls -la artifacts/*
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "latest"
           prerelease: true
           title: "Development Build"
-          files: "artifacts/wlrune-*"
+          files: |
+            artifacts/**/wlrune-*
 
