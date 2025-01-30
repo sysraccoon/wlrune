@@ -99,11 +99,11 @@ struct AppData {
     gesture_path: Vec<Point>,
 }
 
+#[allow(dead_code)]
 struct OutputLayer {
     layer: LayerSurface,
     logical_size: (u32, u32),
     logical_position: (i32, i32),
-    //pixels: ImageBuffer<Rgba<u8>, Vec<u8>>,
     buffer: Option<Buffer>,
 }
 
