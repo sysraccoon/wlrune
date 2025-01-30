@@ -14,15 +14,20 @@
       };
       lib = pkgs.lib;
       wlrune-package = pkgs.callPackage ./package.nix {};
+      wlrune-static-package = pkgs.pkgsStatic.callPackage ./package.nix {};
     in {
       packages = rec {
         wlrune = wlrune-package;
+        wlrune-static = wlrune-static-package;
         default = wlrune;
       };
 
       apps = rec {
         wlrune = flake-utils.lib.mkApp {
           drv = self.packages.${system}.wlrune;
+        };
+        wlrune-static = flake-utils.lib.mkApp {
+          drv = self.packages.${system}.wlrune-static;
         };
         default = wlrune;
       };
@@ -35,12 +40,6 @@
             rustup
             cargo
             cargo-bloat
-
-            libxkbcommon
-
-            wayland
-            wayland-scanner
-            wayland-protocols
           ]);
 
         LD_LIBRARY_PATH = "${lib.makeLibraryPath buildInputs}";

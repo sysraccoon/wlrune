@@ -20,7 +20,5 @@ rustPlatform.buildRustPackage {
 
   nativeBuildInputs = [
     pkg-config
-    libxkbcommon
-    wayland
   ];
 }
