@@ -175,7 +175,7 @@ fn default_config_pathes() -> Result<Vec<PathBuf>, ()> {
         eprintln!("ERROR: coludn't find $HOME: {err}");
     })?;
 
-    let xdg_config_home = env::var("XDG_CONFIG_HOME").unwrap_or(format!("{home}/.local/share"));
+    let xdg_config_home = env::var("XDG_CONFIG_HOME").unwrap_or(format!("{home}/.config"));
     let xdg_config_home = Path::new(&xdg_config_home);
 
     Ok(vec![
