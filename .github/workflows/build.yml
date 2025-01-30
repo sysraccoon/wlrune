@@ -28,3 +28,19 @@ jobs:
         path: ./result/bin/wlrune
         if-no-files-found: "error"
         overwrite: true
+  pre-release:
+    name: "Pre Release"
+    runs-on: "ubuntu-latest"
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: true
+          title: "Development Build"
+          files: |
+            wlrune-*-linux
+
