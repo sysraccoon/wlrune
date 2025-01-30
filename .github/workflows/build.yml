@@ -1,0 +1,26 @@
+name: "Bulid and upload"
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - target: aarch64-linux
+          - target: x86_64-linux
+    steps:
+    - uses: actions/checkout@v4
+    - uses: cachix/install-nix-action@v27
+      with:
+        github_access_token: ${{ secrets.GITHUB_TOKEN }}
+    - run: nix build '.#packages.${{ matrix.target }}.wlrune-static'
+    - run: nix flake check
+    - uses: actions/upload-artifact@v4
+      with:
+        name: wlrune-${{ matrix.target }}
+        path: ./result/bin/wlrune
+        if-no-files-found: "error"
+        overwrite: true
