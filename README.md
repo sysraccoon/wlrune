@@ -2,6 +2,8 @@
 
 Mouse gestures utility for **wayland compositors**
 
+https://github.com/user-attachments/assets/1a14f877-a3eb-4315-a8d5-92c01d90611c
+
 ## Installation
 
 **nix**
