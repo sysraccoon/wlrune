@@ -22,12 +22,12 @@ jobs:
             system = ${{ matrix.target }}
     - run: nix build '.#packages.${{ matrix.target }}.wlrune-static'
     - run: nix flake check
+    - run: cp -vL ./result/bin/wlrune wlrune-${{ matrix.target }}
     - uses: actions/upload-artifact@v4
       with:
         name: wlrune-${{ matrix.target }}
-        path: ./result/bin/wlrune
+        path: ./wlrune-${{ matrix.target }}
         if-no-files-found: "error"
-        overwrite: true
   pre-release:
     name: "Pre Release"
     runs-on: "ubuntu-latest"
@@ -35,12 +35,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
+        with:
+          path: "artifacts/"
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "latest"
           prerelease: true
           title: "Development Build"
-          files: |
-            wlrune-*-linux
+          files: "artifacts/wlrune-*"
 
