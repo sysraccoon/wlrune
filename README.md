@@ -17,7 +17,7 @@ nix profile install github:sysraccoon/wlrune
 
 ```sh
 # make sure you have pkg-config, libxkbcommon and wayland packages
-cargo install --git https://github.com/sysraccoon/mouse-gestures.git
+cargo install --git https://github.com/sysraccoon/wlrune.git
 ```
 
 ## Usage
